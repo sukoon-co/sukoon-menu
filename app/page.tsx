@@ -2,13 +2,14 @@
 
 import { motion } from "framer-motion";
 import { Header } from "@/components/layout/header";
-import { CategoryCard } from "@/components/cards/category-card";
-import { categories } from "@/lib/menu-data";
+import { ApiCategoryCard } from "@/components/cards/api-category-card";
+import { useCategories } from "@/hooks/use-categories";
 import { useLocale } from "@/lib/locale-context";
 import { fadeInUp } from "@/lib/animations";
 
 export default function CategoriesPage() {
-  const { t, dir } = useLocale();
+  const { t, dir, locale } = useLocale();
+  const { categories, loading, error } = useCategories(locale);
 
   return (
     <div className="min-h-screen bg-background" dir={dir}>
@@ -31,9 +32,22 @@ export default function CategoriesPage() {
         </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 lg:gap-8">
-          {categories.map((category, index) => (
-            <CategoryCard key={category.id} category={category} index={index} />
-          ))}
+          {loading ? (
+            Array.from({ length: 6 }).map((_, index) => (
+              <div key={index} className="animate-pulse">
+                <div className="aspect-[4/3] bg-muted rounded-2xl mb-4"></div>
+              </div>
+            ))
+          ) : error ? (
+            <div className="col-span-full text-center py-8">
+              <p className="text-destructive mb-2">Failed to load categories</p>
+              <p className="text-sm text-muted-foreground">{error}</p>
+            </div>
+          ) : (
+            categories?.map((category, index) => (
+              <ApiCategoryCard key={category.id} category={category} index={index} />
+            ))
+          )}
         </div>
 
         <footer className="mt-16 text-center">

@@ -26,9 +26,12 @@ export function Header() {
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
         >
-          <h1 className="text-2xl font-serif font-bold text-primary tracking-tight">
-            {t.brand}
-          </h1>
+          <img
+              src="/logo-h.svg"
+              className="w-auto text-2xl font-serif font-bold text-primary tracking-tight"
+              style={{ width: "160px" }}
+              alt="SUKOON"
+            />
         </motion.div>
 
         <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>

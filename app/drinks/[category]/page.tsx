@@ -4,13 +4,12 @@ import { use } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useLocale } from "@/lib/locale-context";
-import { getCategoryBySlug } from "@/lib/menu-data";
+import { useDrinks } from "@/hooks/use-drinks";
 import { fadeInUp } from "@/lib/animations";
 import { Header } from "@/components/layout/header";
-import { DrinkCard } from "@/components/cards/drink-card";
+import { ApiDrinkCard } from "@/components/cards/api-drink-card";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { notFound } from "next/navigation";
 
 interface DrinksPageProps {
   params: Promise<{ category: string }>;
@@ -19,15 +18,7 @@ interface DrinksPageProps {
 export default function DrinksPage({ params }: DrinksPageProps) {
   const resolvedParams = use(params);
   const { t, locale, dir } = useLocale();
-
-  const category = getCategoryBySlug(resolvedParams.category);
-
-  if (!category) {
-    notFound();
-  }
-
-  const categoryName =
-    t.categoryNames[category.id as keyof typeof t.categoryNames] || category.id;
+  const { drinks, loading, error } = useDrinks(resolvedParams.category, locale);
 
   const ArrowIcon = locale === "ar" ? ArrowRight : ArrowLeft;
 
@@ -56,14 +47,27 @@ export default function DrinksPage({ params }: DrinksPageProps) {
           </Button>
 
           <h2 className="text-3xl md:text-4xl font-serif font-bold text-foreground text-balance">
-            {categoryName}
+            {resolvedParams.category}
           </h2>
         </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 md:gap-6">
-          {category.drinks.map((drink, index) => (
-            <DrinkCard key={drink.id} drink={drink} index={index} />
-          ))}
+          {loading ? (
+            Array.from({ length: 8 }).map((_, index) => (
+              <div key={index} className="animate-pulse">
+                <div className="aspect-square bg-muted rounded-2xl mb-4"></div>
+              </div>
+            ))
+          ) : error ? (
+            <div className="col-span-full text-center py-8">
+              <p className="text-destructive mb-2">Failed to load drinks</p>
+              <p className="text-sm text-muted-foreground">{error}</p>
+            </div>
+          ) : (
+            drinks.map((drink, index) => (
+              <ApiDrinkCard key={drink.id} drink={drink} index={index} />
+            ))
+          )}
         </div>
 
         <footer className="mt-16 text-center">

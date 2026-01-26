@@ -12,23 +12,23 @@ const _playfair = Playfair_Display({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "SUKOON | Digital Menu",
   description: "Calm in Every Sip - Explore our handcrafted beverages",
-  generator: "v0.app",
+  generator: "Sukoon",
   icons: {
     icon: [
       {
-        url: "/icon-light-32x32.png",
+        url: "/fav.png",
         media: "(prefers-color-scheme: light)",
       },
       {
-        url: "/icon-dark-32x32.png",
+        url: "/fav.png",
         media: "(prefers-color-scheme: dark)",
       },
       {
-        url: "/icon.svg",
+        url: "/fav.png",
         type: "image/svg+xml",
       },
     ],
-    apple: "/apple-icon.png",
+    apple: "/fav.png",
   },
 };
 
