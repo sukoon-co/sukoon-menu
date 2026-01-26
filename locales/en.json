@@ -1,0 +1,35 @@
+{
+  "brand": "SUKOON",
+  "tagline": "Calm in Every Sip",
+  "categories": {
+    "title": "Our Menu",
+    "subtitle": "Explore our handcrafted beverages"
+  },
+  "drinks": {
+    "backToMenu": "Back to Menu",
+    "price": "Price",
+    "tags": {
+      "hot": "Hot",
+      "cold": "Cold",
+      "new": "New"
+    }
+  },
+  "categoryNames": {
+    "coffee": "Coffee",
+    "tea": "Tea",
+    "fresh-juice": "Fresh Juice",
+    "smoothies": "Smoothies",
+    "soft-drinks": "Soft Drinks",
+    "specialty": "Specialty Drinks"
+  },
+  "categoryDescriptions": {
+    "coffee": "Premium roasted beans",
+    "tea": "Finest tea leaves",
+    "fresh-juice": "Freshly squeezed",
+    "smoothies": "Blended goodness",
+    "soft-drinks": "Refreshing classics",
+    "specialty": "Signature creations"
+  },
+  "language": "Language",
+  "switchLanguage": "Switch Language"
+}

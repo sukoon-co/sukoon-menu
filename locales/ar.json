@@ -1,0 +1,35 @@
+{
+  "brand": "سكون",
+  "tagline": "هدوء في كل رشفة",
+  "categories": {
+    "title": "قائمتنا",
+    "subtitle": "اكتشف مشروباتنا المصنوعة بعناية"
+  },
+  "drinks": {
+    "backToMenu": "العودة للقائمة",
+    "price": "السعر",
+    "tags": {
+      "hot": "ساخن",
+      "cold": "بارد",
+      "new": "جديد"
+    }
+  },
+  "categoryNames": {
+    "coffee": "القهوة",
+    "tea": "الشاي",
+    "fresh-juice": "عصائر طازجة",
+    "smoothies": "سموذي",
+    "soft-drinks": "مشروبات غازية",
+    "specialty": "مشروبات مميزة"
+  },
+  "categoryDescriptions": {
+    "coffee": "حبوب محمصة فاخرة",
+    "tea": "أجود أوراق الشاي",
+    "fresh-juice": "معصور طازج",
+    "smoothies": "مزيج لذيذ",
+    "soft-drinks": "منعشات كلاسيكية",
+    "specialty": "إبداعات مميزة"
+  },
+  "language": "اللغة",
+  "switchLanguage": "تغيير اللغة"
+}
