@@ -22,7 +22,7 @@ export function ApiDrinkCard({ drink, index = 0 }: ApiDrinkCardProps) {
     >
       <div className="relative aspect-square overflow-hidden">
         <Image
-          src={getDriveImageUrl(drink.image) || "/placeholder.svg"}
+          src={drink.image || "/placeholder.svg"}
           alt={drink.name}
           fill
           className="object-cover transition-transform duration-500 group-hover:scale-105"

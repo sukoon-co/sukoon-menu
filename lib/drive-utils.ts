@@ -25,5 +25,7 @@ export const getDriveImageUrl = (url: string): string => {
   
   if (!fileId) return url; // Return original if no pattern matched
   
-  return `https://drive.google.com/thumbnail?id=${fileId}`;
+  // Use the "uc" endpoint to avoid thumbnail downscaling
+  https://drive.google.com/file/d/1adATV7Js4Hk7c9Pb6lfDSFoFJOSpub01/preview
+  return `https://drive.google.com/file/d/${fileId}/preview`;
 };
