@@ -5,7 +5,12 @@
     "title": "Our Menu",
     "subtitle": "Explore our handcrafted beverages"
   },
+  "subCategories": {
+    "title": "Choose a Category",
+    "back": "Back to Categories"
+  },
   "drinks": {
+    "title": "Drinks",
     "backToMenu": "Back to Menu",
     "price": "Price",
     "tags": {

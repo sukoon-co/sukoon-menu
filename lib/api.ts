@@ -1,5 +1,5 @@
 const BASE_URL =
-  "https://script.google.com/macros/s/AKfycbxJyAswXTE3PrRB1_5TMosNcmnZNp-XfWj6v7ufx8kwlsRlM_O56kbrycwAxXPR1_Di/exec";
+  "https://script.google.com/macros/s/AKfycbzuq8eTzsNm0lPEuIUbVZUUomnnS188-QbRx6ekAUu57QF70Z54Jkf-AQZW2ZaiMQSx/exec";
 
 export interface ApiResponse<T> {
   data: T[];
@@ -11,6 +11,14 @@ export interface ApiCategory {
   name: string;
   subTitle: string;
   image: string;
+}
+
+export interface ApiSubCategory {
+  id: number;
+  name: string;
+  subTitle: string;
+  image: string;
+  parentId?: number;
 }
 
 export interface ApiDrink {
@@ -29,6 +37,17 @@ export async function fetchCategories(lang: "en" | "ar"): Promise<ApiResponse<Ap
   const data = await response.text();
 
   console.log("Raw response:", data);
+  return JSON.parse(data);
+}
+
+export async function fetchSubCategories(
+  parentId: string,
+  lang: "en" | "ar"
+): Promise<ApiResponse<ApiSubCategory>> {
+  const response = await fetch(`${BASE_URL}?action=subCategories&parentId=${parentId}&lang=${lang}`, {
+    redirect: "follow",
+  });
+  const data = await response.text();
   return JSON.parse(data);
 }
 

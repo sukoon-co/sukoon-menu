@@ -26,9 +26,9 @@ export default function CategoriesPage() {
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground mb-3 text-balance">
             {t.categories.title}
           </h2>
-          <p className="text-muted-foreground text-lg max-w-md mx-auto">
+          {/* <p className="text-muted-foreground text-lg max-w-md mx-auto">
             {t.categories.subtitle}
-          </p>
+          </p> */}
         </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 lg:gap-8">
@@ -50,11 +50,11 @@ export default function CategoriesPage() {
           )}
         </div>
 
-        <footer className="mt-16 text-center">
+        {/* <footer className="mt-16 text-center">
           <p className="text-sm text-muted-foreground">
             {t.brand} &middot; {t.tagline}
           </p>
-        </footer>
+        </footer> */}
       </main>
     </div>
   );
