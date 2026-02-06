@@ -40,7 +40,7 @@ export function ApiDrinkCard({ drink, index = 0 }: ApiDrinkCardProps) {
         </p>
         <div className="flex items-center justify-between">
           <span className="text-lg font-bold text-white">
-            {drink.price} SAR
+            {drink.price} SYP
           </span>
         </div>
       </div>
