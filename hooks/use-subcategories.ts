@@ -1,7 +1,7 @@
 ﻿"use client";
 
 import { useEffect, useState } from "react";
-import { fetchSubCategories, ApiSubCategory } from "@/lib/api";
+import { ApiSubCategory, ApiResponse } from "@/lib/api";
 
 export function useSubCategories(parentId: string, lang: "en" | "ar") {
   const [subCategories, setSubCategories] = useState<ApiSubCategory[]>([]);
@@ -19,7 +19,8 @@ export function useSubCategories(parentId: string, lang: "en" | "ar") {
       try {
         setLoading(true);
         setError(null);
-        const data = await fetchSubCategories(parentId, lang);
+        const res = await fetch(`/data/subcategories-${parentId}-${lang}.json`);
+        const data: ApiResponse<ApiSubCategory> = await res.json();
         setSubCategories(data.data);
       } catch (err) {
         setError(err instanceof Error ? err.message : "Failed to load sub-categories");

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { fetchCategories, ApiCategory } from "@/lib/api";
+import { ApiCategory, ApiResponse } from "@/lib/api";
 
 export function useCategories(lang: "en" | "ar") {
   const [categories, setCategories] = useState<ApiCategory[]>([]);
@@ -13,8 +13,8 @@ export function useCategories(lang: "en" | "ar") {
       try {
         setLoading(true);
         setError(null);
-        const data = await fetchCategories(lang);
-
+        const res = await fetch(`/data/categories-${lang}.json`);
+        const data: ApiResponse<ApiCategory> = await res.json();
         setCategories(data.data);
       } catch (err) {
         setError(err instanceof Error ? err.message : "Failed to load categories");

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { fetchDrinks, ApiDrink } from "@/lib/api";
+import { ApiDrink, ApiResponse } from "@/lib/api";
 
 export function useDrinks(category: string, lang: "en" | "ar") {
   const [drinks, setDrinks] = useState<ApiDrink[]>([]);
@@ -13,8 +13,8 @@ export function useDrinks(category: string, lang: "en" | "ar") {
       try {
         setLoading(true);
         setError(null);
-        const data = await fetchDrinks(category, lang);
-        
+        const res = await fetch(`/data/drinks-${category}-${lang}.json`);
+        const data: ApiResponse<ApiDrink> = await res.json();
         setDrinks(data.data);
       } catch (err) {
         setError(err instanceof Error ? err.message : "Failed to load drinks");
