@@ -22,6 +22,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# generated static data (fetched at build time)
+/public/data/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
